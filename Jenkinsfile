@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '''mkdir build
+        sh '''mkdir -p build
 
 cd build
 
