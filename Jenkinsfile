@@ -11,7 +11,7 @@ kernel=`uname -sr | sed --e=\'s/ /\\//\'`
 
 home_3rd=$JENKINS_HOME/3rd/${kernel}
 
-cmake -DINCLUDE_INSTALL_DIR=${home_3rd}/rapidjson ..
+cmake -DINCLUDE_INSTALL_DIR=${home_3rd}/rapidjson/include ..
 
 make'''
       }
