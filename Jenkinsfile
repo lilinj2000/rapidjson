@@ -18,7 +18,9 @@ make'''
     }
     stage('install') {
       steps {
-        sh 'make install'
+        sh '''cd build
+
+make install'''
       }
     }
   }
