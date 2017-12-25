@@ -16,5 +16,10 @@ cmake -DCMAKE_INSTALL_PREFIX=${home_3rd}/rapidjson ..
 make'''
       }
     }
+    stage('install') {
+      steps {
+        sh 'make install'
+      }
+    }
   }
 }
