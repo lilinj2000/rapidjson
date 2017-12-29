@@ -1,26 +1,33 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'lilinj2000/dev:centos6'
+    }
+  }
+
+  environment {
+    home_3rd = '/var/jenkins_home/dist_pkg/3rd/centos6'
+    home_libs = '/var/jenkins_home/dist_pkg/libs/centos6'
+    home_app = '/var/jenkins_home/dist_pkg/app/centos6'
+  }
+
   stages {
     stage('build') {
       steps {
-        sh '''mkdir -p build
-
+        sh '''
+mkdir -p build
 cd build
-
-kernel=`uname -sr | sed --e=\'s/ /\\//\'`
-
-home_3rd=$JENKINS_HOME/3rd/${kernel}
-
 cmake -DINCLUDE_INSTALL_DIR=${home_3rd}/rapidjson/include ..
-
-make'''
+make
+	'''
       }
     }
     stage('install') {
       steps {
-        sh '''cd build
-
-make install'''
+        sh '''
+cd build
+make install
+	'''
       }
     }
   }
